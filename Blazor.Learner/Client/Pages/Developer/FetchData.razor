@@ -15,24 +15,28 @@ else
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
                 <th>Email</th>
+                <th>Experience (Years)</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (Developer dev in developers)
             {
-                <tr>
-                    <td>@dev.FirstName</td>
-                    <td>@dev.LastName</td>
-                    <td>@dev.Email</td>
-                    <td>
-                        <a class="btn btn-success">Edit</a>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+            <tr>
+                <td>@dev.Id</td>
+                <td>@dev.FirstName</td>
+                <td>@dev.LastName</td>
+                <td>@dev.Email</td>
+                <td>@dev.Experience</td>
+                <td>
+                    <a class="btn btn-success">Edit</a>
+                    <button class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
             }
 
         </tbody>
