@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Blazor.Learner.Shared.Models
 {
-    public class Developer
+    public class Developer : BaseEntity
     {
-        public int Id { get; set; }
+       
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
