@@ -1,0 +1,48 @@
+﻿@page "/developer"
+@inject HttpClient client
+
+<h3>Developers</h3>
+@if (developers == null)
+{
+    <text>Loading...</text>
+}
+else if (developers.Length == 0)
+{
+    <text>Empty...</text>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Developer dev in developers)
+            {
+                <tr>
+                    <td>@dev.FirstName</td>
+                    <td>@dev.LastName</td>
+                    <td>@dev.Email</td>
+                    <td>
+                        <a class="btn btn-success">Edit</a>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+@code {
+    Developer[] developers { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        developers = await client.GetFromJsonAsync<Developer[]>("api/developer");
+    }
+}
+
