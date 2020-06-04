@@ -1,7 +1,14 @@
 ﻿@page "/developer"
 @inject HttpClient client
+@inject IJSRuntime js
 
 <h3>Developers</h3>
+<small>Add as many developers as you wish.</small>
+<div class="form-group">
+    <a class="btn btn-success" href="developer/create"><i class="oi oi-plus"></i> Create New</a>
+</div>
+<br>
+
 @if (developers == null)
 {
     <text>Loading...</text>
@@ -26,17 +33,17 @@ else
         <tbody>
             @foreach (Developer dev in developers)
             {
-            <tr>
-                <td>@dev.Id</td>
-                <td>@dev.FirstName</td>
-                <td>@dev.LastName</td>
-                <td>@dev.Email</td>
-                <td>@dev.Experience</td>
-                <td>
-                    <a class="btn btn-success">Edit</a>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
+                <tr>
+                    <td>@dev.Id</td>
+                    <td>@dev.FirstName</td>
+                    <td>@dev.LastName</td>
+                    <td>@dev.Email</td>
+                    <td>@dev.Experience</td>
+                    <td>
+                        <a class="btn btn-success" href="developer/edit/@dev.Id">Edit</a>
+                        <button class="btn btn-danger" @onclick="@(() => Delete(dev.Id))">Delete</button>
+                    </td>
+                </tr>
             }
 
         </tbody>
@@ -47,6 +54,16 @@ else
     protected override async Task OnInitializedAsync()
     {
         developers = await client.GetFromJsonAsync<Developer[]>("api/developer");
+    }
+
+    async Task Delete(int developerId)
+    {
+        var dev = developers.First(x => x.Id == developerId);
+        if (await js.InvokeAsync<bool>("confirm", $"Do you want to delete {dev.FirstName}'s ({dev.Id}) Record?"))
+        {
+            await client.DeleteAsync($"api/developer/{developerId}");
+            await OnInitializedAsync();
+        }
     }
 }
 

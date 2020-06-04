@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Learner.Server", "Blazor.Learner\Server\Blazor.Learner.Server.csproj", "{B0065C1D-14DE-4B50-A5BD-F0FD5DED8FBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.Learner.Client", "Blazor.Learner\Client\Blazor.Learner.Client.csproj", "{E55A9562-14D1-4EF5-9766-1B9CA3721DCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Learner.Client", "Blazor.Learner\Client\Blazor.Learner.Client.csproj", "{E55A9562-14D1-4EF5-9766-1B9CA3721DCF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Learner.Shared", "Blazor.Learner\Shared\Blazor.Learner.Shared.csproj", "{B38C0393-B3E7-4C8C-8CE3-03086C6C31B2}"
 EndProject
